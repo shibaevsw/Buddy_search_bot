@@ -1,7 +1,7 @@
 from aiogram import Router, F
 from aiogram.types import Message
 from aiogram.filters import Command, CommandStart
-from db.requests.user import UserRepository
+from db.repositories.user import UserRepository
 from aiogram_dialog import DialogManager, StartMode
 from dialogs.states import StartDialogSG
 from sqlalchemy.ext.asyncio import AsyncSession

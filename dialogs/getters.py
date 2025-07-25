@@ -2,7 +2,7 @@ from aiogram_dialog import DialogManager
 from aiogram.types import User
 from sqlalchemy.ext.asyncio import AsyncSession
 from db.models.user import User
-from db.requests.user import select
+from db.repositories.user import select
 from dialogs.virtual_keyboard import VirtualKeyboard
 
 

@@ -7,7 +7,7 @@ from aiogram_dialog.widgets.kbd import Button
 from aiogram_dialog.widgets.input import ManagedTextInput
 
 from sqlalchemy.ext.asyncio import AsyncSession
-from db.requests.user import UserRepository
+from db.repositories.user import UserRepository
 from dialogs.states import (
     MainMenuDialogSG,
     NotFoundDialogSG,
