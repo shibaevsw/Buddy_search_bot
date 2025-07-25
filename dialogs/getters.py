@@ -5,8 +5,10 @@ from db.models.user import User
 from db.requests.user import select
 from dialogs.virtual_keyboard import VirtualKeyboard
 
+
 async def get_name(event_from_user: User, **kwargs):
     return {'name': event_from_user.first_name or 'Друг'}
+
 
 async def get_user_data(dialog_manager: DialogManager, **kwargs):
     def safe(value, default="—"):

@@ -59,11 +59,11 @@ pofile_dialog = Dialog(
         state=ProfileDialogSG.edit_age,
     ),
 
-    Window(
-        Const("Введите что-нибудь:"),
-        Format("Вы вводите: {dialog_data[typed_text]}"),
-        vk.widget,
-        getter=vk_getter,
-        state=ProfileDialogSG.edit_inline,
-    ),
+    # Window(
+    #     Const("Введите что-нибудь:"),
+    #     Format("Вы вводите: {dialog_data[typed_text]}"),
+    #     vk.widget,
+    #     getter=vk_getter,
+    #     state=ProfileDialogSG.edit_inline,
+    # ),
 )

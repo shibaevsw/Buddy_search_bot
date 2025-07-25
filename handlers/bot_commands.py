@@ -1,7 +1,7 @@
 from aiogram import Router, F
 from aiogram.types import Message
 from aiogram.filters import Command, CommandStart
-from db.requests.user import upsert_user
+from db.requests.user import UserRepository
 from aiogram_dialog import DialogManager, StartMode
 from dialogs.states import StartDialogSG
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -11,8 +11,8 @@ router = Router()
 
 @router.message(CommandStart())
 async def process_start_command(message: Message, dialog_manager: DialogManager, session: AsyncSession):
-    await upsert_user(
-        session=session,
+    repo = UserRepository(session=session)
+    await repo.upsert_user(
         telegram_id=message.from_user.id,
         first_name=message.from_user.first_name,
         last_name=message.from_user.last_name,
