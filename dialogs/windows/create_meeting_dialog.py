@@ -6,12 +6,13 @@ from dialogs.states import CreateMeeteinDialogSG
 from dialogs.handlers import NavigateHanlers
 
 from l10n_gen import L10n
+from utils.text_formatters import as_full_width
 l10n = L10n()
 
 
 create_miting_dialog = Dialog(
     Window(
-        Const(text=l10n.create_meeting_header()),
+        Const(as_full_width(text=l10n.create_meeting_header())),
         Format(text="Какие-то данные или инструкии или акции, да че угодно"),
         Row(
             Button(text=Format("Раз"), id="1", on_click=NavigateHanlers.go_not_fond),

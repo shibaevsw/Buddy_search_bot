@@ -47,36 +47,36 @@ pofile_dialog = Dialog(
     ),
 
     Window(
-        Const("Введите новое имя:"),
-        Button(Format(text=l10n.cancel_btn()), id="cancel", on_click=NavigateHanlers.go_back),
+        Const(as_full_width("Введите новое имя:")),
+        Button(Format(text=l10n.cancel_btn()), id="cancel", on_click=ProfileHandlers.edit),
         TextInput(id="input_first_name", on_success=ProfileHandlers.input_first_name),
         state=ProfileDialogSG.edit_first_name,
     ),
 
     Window(
-        Const("Введите фамилию:"),
-        Button(Format(text=l10n.cancel_btn()), id="cancel", on_click=NavigateHanlers.go_back),
+        Const(as_full_width("Введите фамилию:")),
+        Button(Format(text=l10n.cancel_btn()), id="cancel", on_click=ProfileHandlers.edit),
         TextInput(id="input_last_name", on_success=ProfileHandlers.input_last_name),
         state=ProfileDialogSG.edit_last_name,
     ),
 
     Window(
-        Const("Введите возраст:"),
-        Button(Format(text=l10n.cancel_btn()), id="cancel", on_click=NavigateHanlers.go_back),
+        Const(as_full_width("Введите возраст:")),
+        Button(Format(text=l10n.cancel_btn()), id="cancel", on_click=ProfileHandlers.edit),
         TextInput(id="input_age", on_success=ProfileHandlers.input_age),
         state=ProfileDialogSG.edit_age,
     ),
 
     Window(
-        Const("Введите город:"),
-        Button(Format(text=l10n.cancel_btn()), id="cancel", on_click=NavigateHanlers.go_back),
+        Const(as_full_width("Введите город:")),
+        Button(Format(text=l10n.cancel_btn()), id="cancel", on_click=ProfileHandlers.edit),
         TextInput(id="input_city", on_success=ProfileHandlers.input_city),
         state=ProfileDialogSG.edit_city,
     ),
 
     Window(
-        Const("Введите пол:"),
-        Button(Format(text=l10n.cancel_btn()), id="cancel", on_click=NavigateHanlers.go_back),
+        Const(as_full_width("Введите пол:")),
+        Button(Format(text=l10n.cancel_btn()), id="cancel", on_click=ProfileHandlers.edit),
         TextInput(id="input_city", on_success=ProfileHandlers.input_gender),
         state=ProfileDialogSG.edit_gender,
     ),

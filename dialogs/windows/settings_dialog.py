@@ -5,11 +5,12 @@ from aiogram_dialog.widgets.text import Const, Format
 from dialogs.states import SettingsDialogSG, NotFoundDialogSG
 from dialogs.handlers import NavigateHanlers
 from l10n_gen import L10n
+from utils.text_formatters import as_full_width
 l10n = L10n()
 
 settings_dialog = Dialog(
     Window(
-        Const(text=l10n.settings_header()),
+        Const(as_full_width(text=l10n.settings_header())),
         Format(text="НУ тут заданные параметры"),
         Row(
             Button(
