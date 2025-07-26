@@ -48,7 +48,6 @@ class ProfileHandlers:
 
     # TODO: Сделать выбор из кнопок
     async def select_city(callback: CallbackQuery, widget: Select, dialog_manager: DialogManager, item_name: str):
-        print(item_name)
         dialog_manager.dialog_data["city"] = item_name
         await dialog_manager.switch_to(ProfileDialogSG.edit)
 
@@ -68,10 +67,10 @@ class ProfileHandlers:
 
 
     # TODO: Сделать выбор из кнопок
-    async def input_gender(message: Message, widget: ManagedTextInput, dialog_manager: DialogManager, text: str):
-        dialog_manager.dialog_data["gender"] = text
-        await message.delete()
-        await dialog_manager.switch_to(ProfileDialogSG.edit, show_mode=ShowMode.EDIT)
+    async def select_gender(callback: CallbackQuery, widget: Select, dialog_manager: DialogManager, item_name: str):
+        dialog_manager.dialog_data["gender"] = item_name
+        print(dialog_manager.dialog_data["gender"])
+        await dialog_manager.switch_to(ProfileDialogSG.edit)
 
 
 
@@ -92,7 +91,7 @@ class ProfileHandlers:
             mapping = {
                 "Мужской": "M",
                 "Женский": "F",
-                "Другое": "O",
+                "Не важно": "O",
                 "Не указан": "N"
             }
             return mapping.get(str(value), "N")

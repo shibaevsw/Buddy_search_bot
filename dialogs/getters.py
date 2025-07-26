@@ -49,3 +49,12 @@ async def get_cities(**kwargs):
         ('Любой', 3),
     ]
     return {'cities': cities}
+
+
+async def get_genders(**kwargs):
+    genders = [
+        ('Мужской', 'M'),
+        ('Женский', 'F'),
+        ('Не важно', 'O'),
+    ]
+    return {'genders': genders}

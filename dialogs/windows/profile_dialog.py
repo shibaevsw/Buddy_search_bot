@@ -8,7 +8,7 @@ from dialogs.states import ProfileDialogSG
 from dialogs.handlers.navigate_handlers import NavigateHanlers
 from dialogs.handlers.profile_handlers import ProfileHandlers
 
-from dialogs.getters import get_cities, get_user_data, get_edited_user_data
+from dialogs.getters import get_cities, get_user_data, get_edited_user_data, get_genders
 
 from l10n_gen import L10n
 l10n = L10n()
@@ -81,9 +81,16 @@ pofile_dialog = Dialog(
     ),
 
     Window(
-        Const(as_full_width("Введите пол:")),
+        Const(as_full_width("Выберите пол:")),
+        Column(
+            Select(Format('{item[0]}'),
+               id='gender',
+               item_id_getter=lambda x: x[0],
+               items='genders',
+               on_click=ProfileHandlers.select_gender),
+        ),
         Button(Format(text=l10n.cancel_btn()), id="cancel", on_click=ProfileHandlers.edit),
-        TextInput(id="input_city", on_success=ProfileHandlers.input_gender),
+        getter=get_genders,
         state=ProfileDialogSG.edit_gender,
     ),
 )
