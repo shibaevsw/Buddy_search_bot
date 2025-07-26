@@ -19,5 +19,13 @@ profile-data =
  Возраст: {user.age}
  Пол: {user.gender}
 
+# Edit Profile
+edit-profile-data =
+ Имя: {first_name}
+ Фамилия: {last_name}
+ Город: {city}
+ Возраст: {age}
+ Пол: {gender}
+
 # Other
 edit-header = <b>Редактировать</b>

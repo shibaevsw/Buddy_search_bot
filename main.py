@@ -15,7 +15,7 @@ from aiogram.enums import ParseMode
 from aiogram_dialog import setup_dialogs
 
 from settings import settings
-from handlers import bot_commands
+from handlers import bot_commands, delete_messages
 from dialogs.windows.bot_commans_dialog import bot_commands_dialog
 from dialogs.windows.not_found_dialog import not_found_dialog
 from dialogs.windows.main_menu_dialog import main_menu_dialog
@@ -78,6 +78,7 @@ class App:
         # Register handlers
         # self._dp.include_router(bot_commands_admin.router)
         self._dp.include_router(bot_commands.router)
+        # self._dp.include_router(delete_messages.router)
 
         # Register dialogs
         self._dp.include_routers(bot_commands_dialog,

@@ -1,36 +1,52 @@
+import pprint
+from traceback import print_tb
 from aiogram_dialog import DialogManager
 from aiogram.types import User
 from sqlalchemy.ext.asyncio import AsyncSession
+from db.models import user
 from db.models.user import User
-from db.repositories.user import select
-from dialogs.virtual_keyboard import VirtualKeyboard
+from db.repositories.user import UserRepository
 
 
-async def get_name(event_from_user: User, **kwargs):
-    return {'name': event_from_user.first_name or 'Друг'}
+
+def user_to_dict(user) -> dict:
+    allowed_types = (str, int, float, bool, type(None))
+    return {
+        col.name: getattr(user, col.name)
+        for col in user.__table__.columns
+        if isinstance(getattr(user, col.name), allowed_types)
+    }
 
 
 async def get_user_data(dialog_manager: DialogManager, **kwargs):
-    def safe(value, default="—"):
-        return value if value is not None else default
 
     session: AsyncSession = dialog_manager.middleware_data["session"]
+    repo = UserRepository(session)
     tg_id = dialog_manager.event.from_user.id
 
-    user = await session.scalar(
-        select(User).where(User.telegram_id == tg_id)
-    )
+    user = await repo.get_by_telegram_id(tg_id)
 
-    # return {
-    #     "user": user
-    # }
+    user_dict = user_to_dict(user)
+    dialog_manager.dialog_data.update(user_dict)
+
 
     data = {
         "user": user,
     }
-    data.update(dialog_manager.dialog_data)
+
+    pprint.pprint(data)
+    pprint.pprint(dialog_manager.dialog_data)
     return data
 
+
+async def get_edited_user_data(dialog_manager: DialogManager, **kwargs):
+    pprint.pprint(dialog_manager.dialog_data)
+    return dialog_manager.dialog_data
+
+
+
+async def get_edit_data(dialog_manager: DialogManager, **kwargs):
+    return dialog_manager.dialog_data
 
 
 async def vk_getter(dialog_manager: DialogManager, **kwargs):

@@ -1,4 +1,3 @@
-from types import SimpleNamespace
 from datetime import datetime
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import DateTime, func
@@ -27,9 +26,6 @@ class SafeDisplayMixin:
             "O": "Другое",
             "N": "Не указан",
             None: "—",
-        },
-        "city": {
-            None: "Выберите ваш город",
         },
         "role": {
             "ADMIN": "Админ",

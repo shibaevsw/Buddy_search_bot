@@ -17,12 +17,8 @@ class UserRepository:
             telegram_id=telegram_id,
             first_name=first_name,
             last_name=last_name,
-        ).on_conflict_do_update(
+        ).on_conflict_do_nothing(
             index_elements=["telegram_id"],
-            set_={
-                "first_name": first_name,
-                "last_name": last_name,
-            },
         )
         await self.session.execute(stmt)
         await self.session.commit()
@@ -58,7 +54,3 @@ class UserRepository:
         await self.session.commit()
         await self.session.refresh(user)
         return user
-
-
-
-

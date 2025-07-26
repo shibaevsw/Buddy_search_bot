@@ -61,6 +61,12 @@ class L10n:
             return f'[missing: edit-header]'
         return self.bundle.format_pattern(msg.value, kwargs)[0]
 
+    def edit_profile_data(self, **kwargs):
+        msg = self.bundle.get_message('edit-profile-data')
+        if not msg or not msg.value:
+            return f'[missing: edit-profile-data]'
+        return self.bundle.format_pattern(msg.value, kwargs)[0]
+
     def find_meeteing_btn(self, **kwargs):
         msg = self.bundle.get_message('find-meeteing-btn')
         if not msg or not msg.value:

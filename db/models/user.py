@@ -12,7 +12,7 @@ class User(Base, TimestampMixin, SafeDisplayMixin):
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     telegram_id: Mapped[int] = mapped_column(BigInteger, unique=True)
-    first_name: Mapped[str] = mapped_column(String)
+    first_name: Mapped[str] = mapped_column(String, server_default=text("' '"))
     last_name: Mapped[str | None] = mapped_column(String, nullable=True)
     city: Mapped[str | None] = mapped_column(String, nullable=True)
     age: Mapped[int | None] = mapped_column(Integer, nullable=True)
