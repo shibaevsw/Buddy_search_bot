@@ -83,3 +83,30 @@ class VirtualKeyboard:
         ))
 
         return Group(*rows)
+
+
+
+    # Window(
+    #     Const("Введите что-нибудь:"),
+    #     Format("Вы вводите: {dialog_data[typed_text]}"),
+    #     vk.widget,
+    #     getter=vk_getter,
+    #     state=ProfileDialogSG.edit_inline,
+    # ),
+
+
+    # async def vk_getter(dialog_manager: DialogManager, **kwargs):
+    # dialog_data = dialog_manager.dialog_data
+
+    # if "typed_text" not in dialog_data:
+    #     dialog_data["typed_text"] = ""
+
+    # if "lang" not in dialog_data:
+    #     dialog_data["lang"] = 'ru'
+
+    # current_text = dialog_data["typed_text"]
+
+    # return {
+    #     "typed_text": dialog_manager.dialog_data["typed_text"],
+    #     "lang": dialog_manager.dialog_data["lang"],
+    # }

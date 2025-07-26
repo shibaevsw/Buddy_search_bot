@@ -1,6 +1,6 @@
 from turtle import width
 from aiogram_dialog import Dialog, Window
-from aiogram_dialog.widgets.kbd import Button, Row, Column
+from aiogram_dialog.widgets.kbd import Button, Row, Column, Select
 from aiogram_dialog.widgets.text import Const, Format
 from aiogram_dialog.widgets.input import TextInput
 
@@ -8,14 +8,12 @@ from dialogs.states import ProfileDialogSG
 from dialogs.handlers.navigate_handlers import NavigateHanlers
 from dialogs.handlers.profile_handlers import ProfileHandlers
 
-from dialogs.getters import get_edit_data, get_user_data, vk_getter, get_edited_user_data
+from dialogs.getters import get_cities, get_user_data, get_edited_user_data
 
-from dialogs.virtual_keyboard import VirtualKeyboard
 from l10n_gen import L10n
 l10n = L10n()
 from utils.text_formatters import as_full_width
 
-vk = VirtualKeyboard()
 
 
 pofile_dialog = Dialog(
@@ -69,9 +67,16 @@ pofile_dialog = Dialog(
     ),
 
     Window(
-        Const(as_full_width("Введите город:")),
+        Const(as_full_width("Выберите город:")),
+        Column(
+            Select(Format('{item[0]}'),
+               id='city',
+               item_id_getter=lambda x: x[0],
+               items='cities',
+               on_click=ProfileHandlers.select_city),
+        ),
         Button(Format(text=l10n.cancel_btn()), id="cancel", on_click=ProfileHandlers.edit),
-        TextInput(id="input_city", on_success=ProfileHandlers.input_city),
+        getter=get_cities,
         state=ProfileDialogSG.edit_city,
     ),
 
@@ -81,12 +86,4 @@ pofile_dialog = Dialog(
         TextInput(id="input_city", on_success=ProfileHandlers.input_gender),
         state=ProfileDialogSG.edit_gender,
     ),
-
-    # Window(
-    #     Const("Введите что-нибудь:"),
-    #     Format("Вы вводите: {dialog_data[typed_text]}"),
-    #     vk.widget,
-    #     getter=vk_getter,
-    #     state=ProfileDialogSG.edit_inline,
-    # ),
 )

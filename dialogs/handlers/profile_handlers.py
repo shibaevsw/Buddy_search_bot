@@ -3,7 +3,7 @@ from loguru import logger
 
 from aiogram.types import CallbackQuery, Message
 from aiogram_dialog import DialogManager, ShowMode
-from aiogram_dialog.widgets.kbd import Button
+from aiogram_dialog.widgets.kbd import Button, Select
 from aiogram_dialog.widgets.input import ManagedTextInput
 
 from db.repositories.user import UserRepository
@@ -47,10 +47,10 @@ class ProfileHandlers:
 
 
     # TODO: Сделать выбор из кнопок
-    async def input_city(message: Message, widget: ManagedTextInput, dialog_manager: DialogManager, text: str):
-        dialog_manager.dialog_data["city"] = text
-        await message.delete()
-        await dialog_manager.switch_to(ProfileDialogSG.edit, show_mode=ShowMode.EDIT)
+    async def select_city(callback: CallbackQuery, widget: Select, dialog_manager: DialogManager, item_name: str):
+        print(item_name)
+        dialog_manager.dialog_data["city"] = item_name
+        await dialog_manager.switch_to(ProfileDialogSG.edit)
 
 
     async def edit_age(callback: CallbackQuery, button: Button, dialog_manager: DialogManager):

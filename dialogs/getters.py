@@ -1,10 +1,5 @@
-import pprint
-from traceback import print_tb
 from aiogram_dialog import DialogManager
-from aiogram.types import User
 from sqlalchemy.ext.asyncio import AsyncSession
-from db.models import user
-from db.models.user import User
 from db.repositories.user import UserRepository
 
 
@@ -34,13 +29,10 @@ async def get_user_data(dialog_manager: DialogManager, **kwargs):
         "user": user,
     }
 
-    pprint.pprint(data)
-    pprint.pprint(dialog_manager.dialog_data)
     return data
 
 
 async def get_edited_user_data(dialog_manager: DialogManager, **kwargs):
-    pprint.pprint(dialog_manager.dialog_data)
     return dialog_manager.dialog_data
 
 
@@ -49,18 +41,11 @@ async def get_edit_data(dialog_manager: DialogManager, **kwargs):
     return dialog_manager.dialog_data
 
 
-async def vk_getter(dialog_manager: DialogManager, **kwargs):
-    dialog_data = dialog_manager.dialog_data
 
-    if "typed_text" not in dialog_data:
-        dialog_data["typed_text"] = ""
-
-    if "lang" not in dialog_data:
-        dialog_data["lang"] = 'ru'
-
-    current_text = dialog_data["typed_text"]
-
-    return {
-        "typed_text": dialog_manager.dialog_data["typed_text"],
-        "lang": dialog_manager.dialog_data["lang"],
-    }
+async def get_cities(**kwargs):
+    cities = [
+        ('Сафоново', 1),
+        ('Рославль', 2),
+        ('Любой', 3),
+    ]
+    return {'cities': cities}

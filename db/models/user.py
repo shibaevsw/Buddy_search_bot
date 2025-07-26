@@ -1,6 +1,6 @@
 from types import SimpleNamespace
 from sqlalchemy import BigInteger, CheckConstraint, String, Integer, CHAR, text
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from db import Base
 from db.models.mixins import SafeDisplayMixin, TimestampMixin
 
@@ -18,3 +18,5 @@ class User(Base, TimestampMixin, SafeDisplayMixin):
     age: Mapped[int | None] = mapped_column(Integer, nullable=True)
     gender: Mapped[str | None] = mapped_column(CHAR(1), server_default=text("'N'"))
     role: Mapped[str | None] = mapped_column(String, server_default=text("'USER'"))
+
+    meetings = relationship("Meeting", back_populates="creator")
