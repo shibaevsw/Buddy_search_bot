@@ -3,7 +3,7 @@ from aiogram_dialog.widgets.kbd import Button, Row
 from aiogram_dialog.widgets.text import Const, Format
 
 from dialogs.states import MainMenuDialogSG
-from dialogs.handlers import MainMenuHandlers
+from dialogs.handlers.main_menu_handlers import MainMenuHandlers
 from l10n_gen import L10n
 from utils.text_formatters import as_full_width
 l10n = L10n()

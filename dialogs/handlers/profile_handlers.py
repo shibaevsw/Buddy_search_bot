@@ -1,4 +1,3 @@
-import pprint
 from typing import Any
 from loguru import logger
 
@@ -7,72 +6,9 @@ from aiogram_dialog import DialogManager, ShowMode
 from aiogram_dialog.widgets.kbd import Button
 from aiogram_dialog.widgets.input import ManagedTextInput
 
-from sqlalchemy.ext.asyncio import AsyncSession
-from db.models import user
 from db.repositories.user import UserRepository
-from db.models.user import User
-from db.repositories.user import select
 
-from dialogs.states import (
-    MainMenuDialogSG,
-    NotFoundDialogSG,
-    CreateMeeteinDialogSG,
-    FindMeeteinDialogSG,
-    ProfileDialogSG,
-    SettingsDialogSG,
-)
-
-
-
-
-class NavigateHanlers:
-
-    async def go_not_fond(
-        callback: CallbackQuery, button: Button, dialog_manager: DialogManager
-    ):
-        await dialog_manager.start(state=NotFoundDialogSG.main)
-
-    async def go_next(
-        callback: CallbackQuery, button: Button, dialog_manager: DialogManager
-    ):
-        await dialog_manager.next()
-
-    async def go_back(
-        callback: CallbackQuery, button: Button, dialog_manager: DialogManager
-    ):
-        await dialog_manager.back()
-
-    async def close(
-        callback: CallbackQuery, button: Button, dialog_manager: DialogManager
-    ):
-        await dialog_manager.done()
-
-
-class MainMenuHandlers:
-    async def main_menu(
-        callback: CallbackQuery, button: Button, dialog_manager: DialogManager
-    ):
-        await dialog_manager.start(state=MainMenuDialogSG.main)
-
-    async def create_meening(
-        callback: CallbackQuery, button: Button, dialog_manager: DialogManager
-    ):
-        await dialog_manager.start(state=CreateMeeteinDialogSG.main)
-
-    async def find_meening(
-        callback: CallbackQuery, button: Button, dialog_manager: DialogManager
-    ):
-        await dialog_manager.start(state=FindMeeteinDialogSG.main)
-
-    async def profile(
-        callback: CallbackQuery, button: Button, dialog_manager: DialogManager
-    ):
-        await dialog_manager.start(state=ProfileDialogSG.main)
-
-    async def settings(
-        callback: CallbackQuery, button: Button, dialog_manager: DialogManager
-    ):
-        await dialog_manager.start(state=SettingsDialogSG.main)
+from dialogs.states import ProfileDialogSG
 
 
 class ProfileHandlers:

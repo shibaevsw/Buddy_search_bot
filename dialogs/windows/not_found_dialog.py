@@ -4,7 +4,8 @@ from aiogram_dialog.widgets.kbd import Button
 from aiogram_dialog.widgets.text import Const, Format
 
 from dialogs.states import NotFoundDialogSG
-from dialogs.handlers import NavigateHanlers, MainMenuHandlers
+from dialogs.handlers.main_menu_handlers import MainMenuHandlers
+from dialogs.handlers.navigate_handlers import NavigateHanlers
 
 from l10n_gen import L10n
 l10n = L10n()

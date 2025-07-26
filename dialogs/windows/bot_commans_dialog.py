@@ -3,7 +3,7 @@ from aiogram_dialog.widgets.kbd import Button
 from aiogram_dialog.widgets.text import Const, Format
 
 from dialogs.states import StartDialogSG
-from dialogs.handlers import MainMenuHandlers
+from dialogs.handlers.main_menu_handlers import MainMenuHandlers
 from dialogs.getters import get_user_data
 
 from utils.text_formatters import as_full_width

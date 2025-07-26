@@ -4,8 +4,9 @@ from aiogram_dialog.widgets.kbd import Button, Row, Column
 from aiogram_dialog.widgets.text import Const, Format
 from aiogram_dialog.widgets.input import TextInput
 
-from dialogs.states import ProfileDialogSG, NotFoundDialogSG
-from dialogs.handlers import NavigateHanlers, ProfileHandlers
+from dialogs.states import ProfileDialogSG
+from dialogs.handlers.navigate_handlers import NavigateHanlers
+from dialogs.handlers.profile_handlers import ProfileHandlers
 
 from dialogs.getters import get_edit_data, get_user_data, vk_getter, get_edited_user_data
 

@@ -2,8 +2,8 @@ from aiogram_dialog import Dialog, Window
 from aiogram_dialog.widgets.kbd import Button, Row
 from aiogram_dialog.widgets.text import Const, Format
 
-from dialogs.states import SettingsDialogSG, NotFoundDialogSG
-from dialogs.handlers import NavigateHanlers
+from dialogs.states import SettingsDialogSG
+from dialogs.handlers.navigate_handlers import NavigateHanlers
 from l10n_gen import L10n
 from utils.text_formatters import as_full_width
 l10n = L10n()

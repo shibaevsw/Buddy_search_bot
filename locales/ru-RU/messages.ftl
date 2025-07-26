@@ -1,7 +1,7 @@
 # Bot commands answers
 welcome-user = Добро пожаловать, { $name }!
 start-command-answer = Чтобы начать пользоваться ботом
- перейдите в главное меню⬇️
+ перейдите в главное меню ⬇️
 
 
 # Main menu
